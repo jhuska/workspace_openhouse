@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<body>
+	<ui:composition template="/templates/template.xhtml">
+
+		<ui:define name="title">RichFaces Sample</ui:define>
+
+		<ui:define name="body">
+
+			<h:form prependId="false">
+
+				<rich:tabPanel switchType="client">
+
+					<rich:tab header="Ajax">
+						<h:outputLabel value="Name:" for="nameInput" />
+
+						<h:inputText id="nameInput" value="#{richBean.name}">
+							<a4j:ajax event="keyup" render="output" />
+						</h:inputText>
+
+						<h:panelGroup id="output">
+							<h:outputText value="Hello #{richBean.name}!"
+								rendered="#{not empty richBean.name}" />
+						</h:panelGroup>
+					</rich:tab>
+
+					<rich:tab header="calendar">
+						<rich:calendar />
+					</rich:tab>
+
+					<rich:tab header="table">
+						<rich:dataTable width="700" value="#{richBean.cars}" var="car">
+							<f:facet name="header">
+								<rich:columnGroup>
+									<rich:column>
+										<h:outputText value="Vendor" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Price" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Max Speed" />
+									</rich:column>
+								</rich:columnGroup>
+							</f:facet>
+							<rich:column>
+								<h:outputText value="#{car.vendor}" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="#{car.price}" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="#{car.maxSpeed}" />
+							</rich:column>
+
+						</rich:dataTable>
+					</rich:tab>
+
+				</rich:tabPanel>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
