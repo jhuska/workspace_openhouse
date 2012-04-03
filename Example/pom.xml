@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.richfaces.openhouse</groupId>
-    <artifactId>Example</artifactId>
+    <artifactId>example</artifactId>
     <name>RichFaces 4 Application</name>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
